@@ -1,5 +1,3 @@
-from pathlib import Path
+from variavel import userPath
 
-home = str(Path.home())
-
-print(home)
+print(f'{userPath}/bloqueado.zip.FuckYourFiles')
