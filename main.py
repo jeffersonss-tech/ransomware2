@@ -122,12 +122,9 @@ while True:
 
         with open('config/filekey.key', 'w') as filekey:
             key = filekey.write(
-                'entre em contato com o suporte')
+                'a chave evaporou!')
         break
     else:
         print('falha na conexão!\nTentando novamente...')
         sleep(1)
         os.system('cls')
-
-
-#
